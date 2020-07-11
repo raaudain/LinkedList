@@ -83,7 +83,7 @@ LinkedList.prototype.removeTail = function(){
   return val;
 }
 
-
+// SEARCH
 LinkedList.prototype.search = function(searchValue) {
   let currentNode = this.head;
 
@@ -98,16 +98,44 @@ LinkedList.prototype.search = function(searchValue) {
   return null;
 }
 
+
+LinkedList.prototype.indexOf = function(value){
+  let currentNode = this.head;
+
+  const index = [];
+  let count = 0;
+
+  while(currentNode){
+    if(currentNode.value === value){
+      index.push(count);
+    }
+
+    count++;
+    currentNode = currentNode.next;
+  }
+
+  if(index.length > 0){
+    return index;
+  } 
+  else{
+    return null;
+  }
+}
+
 const ll = new LinkedList();
 
-ll.addToHead(1000)
-ll.addToHead(2000)
-ll.addToHead(3000)
+ll.addToTail(1)
+ll.addToTail(5)
+ll.addToTail(3)
+ll.addToTail(5)
+ll.addToTail(8)
+ll.addToTail(7)
+ll.addToTail(5)
 
 ll.addToTail("6 million")
 ll.addToTail("RAMON")
 ll.addToTail("30")
 
-console.log(ll)
+//console.log(ll)
 //console.log("Removed ", ll.removeTail())
-console.log("Result", ll.search("RAMON"))
+console.log(ll.indexOf(5))
