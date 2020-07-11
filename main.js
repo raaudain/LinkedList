@@ -62,6 +62,7 @@ LinkedList.prototype.removeHead = function(){
   // Makes the next node the new head
   this.head = this.head.next;
 
+  // If head now exists
   if (this.head) {
     this.head.prev = null;
   }
@@ -73,6 +74,24 @@ LinkedList.prototype.removeHead = function(){
 }
 
 
+LinkedList.prototype.removeTail = function(){
+  if (!this.tail){
+    return null;
+  }
+
+  const val = this.tail.value;
+
+  this.tail = this.tail.prev;
+
+  if (this.tail){
+    this.tail.next = null;
+  }
+  else{
+    this.head = null;
+  }
+
+  return val;
+}
 // const ll = new LinkedList();
 // ll.addToHead(100);
 // ll.addToHead(200);
@@ -91,8 +110,8 @@ const ll = new LinkedList();
 
 ll.addToHead(1000)
 ll.addToHead(2000)
-ll.addToTail(3000)
+ll.addToHead(3000)
 
 console.log(ll)
-console.log(ll.removeHead())
+console.log("Removed ", ll.removeTail())
 console.log(ll)
