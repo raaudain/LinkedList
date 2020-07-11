@@ -10,17 +10,7 @@ function Node(value, next, prev) {
   this.prev = prev;
 }
 
-// // Each object below is a linked list
-// const LL = new LinkedList();
-// const userList = new LinkedList();
-// const toDoList = new LinkedList();
-
-// // Each object below is a new node
-// const node1 = new Node(100, "node2", null);
-
-// console.log(LL)
-// console.log(node1)
-
+// ADD HEAD
 LinkedList.prototype.addToHead = function(value) {
   const newNode = new Node(value, this.head, null);
 
@@ -37,7 +27,7 @@ LinkedList.prototype.addToHead = function(value) {
   this.head = newNode;
 }
 
-
+// ADD TAIL
 LinkedList.prototype.addToTail = function(value){
   const newNode = new Node(value, null, this.tail)
 
@@ -51,7 +41,7 @@ LinkedList.prototype.addToTail = function(value){
   this.tail = newNode;
 }
 
-
+// REMOVE HEAD
 LinkedList.prototype.removeHead = function(){
   if (!this.head){
     return null;
@@ -73,7 +63,7 @@ LinkedList.prototype.removeHead = function(){
   return val;
 }
 
-
+// REMOVE TAIL
 LinkedList.prototype.removeTail = function(){
   if (!this.tail){
     return null;
@@ -92,19 +82,21 @@ LinkedList.prototype.removeTail = function(){
 
   return val;
 }
-// const ll = new LinkedList();
-// ll.addToHead(100);
-// ll.addToHead(200);
-// ll.addToHead(300);
 
-// console.log(ll)
 
-// const myLL = new LinkedList();
-// myLL.addToTail(500);
-// myLL.addToTail(600);
-// myLL.addToTail(700);
+LinkedList.prototype.search = function(searchValue) {
+  let currentNode = this.head;
 
-// myLL.addToHead(10);
+  while(currentNode){
+    if(currentNode.value === searchValue){
+      return currentNode.value;
+    }
+    // If currentNode.next is null then currentNode will no longer be true and the loop will stop
+    currentNode = currentNode.next;
+  }
+
+  return null;
+}
 
 const ll = new LinkedList();
 
@@ -112,6 +104,10 @@ ll.addToHead(1000)
 ll.addToHead(2000)
 ll.addToHead(3000)
 
+ll.addToTail("6 million")
+ll.addToTail("RAMON")
+ll.addToTail("30")
+
 console.log(ll)
-console.log("Removed ", ll.removeTail())
-console.log(ll)
+//console.log("Removed ", ll.removeTail())
+console.log("Result", ll.search("RAMON"))
