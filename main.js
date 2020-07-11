@@ -24,5 +24,15 @@ console.log(node1)
 LinkedList.prototype.addToHead = function(value) {
   const newNode = new Node(value, this.head, null);
 
-  if (this.)
+  // If there is a head in the node, set newNode to be the previous node.
+  // If the linkedlist is empty, newNode is the tail
+  if (this.head){
+    this.head.prev = newNode;
+  }
+  else{
+    this.tail = newNode;
+  }
+
+  // Make newNode head
+  this.head = newNode;
 }
