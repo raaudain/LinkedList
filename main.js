@@ -49,12 +49,50 @@ LinkedList.prototype.addToTail = function(value){
   }
 
   this.tail = newNode;
-
 }
 
-const ll = new LinkedList();
-ll.addToHead(100);
-ll.addToHead(200);
-ll.addToHead(300);
 
+LinkedList.prototype.removeHead = function(){
+  if (!this.head){
+    return null;
+  }
+
+  const val = this.head.value;
+
+  // Makes the next node the new head
+  this.head = this.head.next;
+
+  if (this.head) {
+    this.head.prev = null;
+  }
+  else {
+    this.tail = null
+  }
+
+  return val;
+}
+
+
+// const ll = new LinkedList();
+// ll.addToHead(100);
+// ll.addToHead(200);
+// ll.addToHead(300);
+
+// console.log(ll)
+
+// const myLL = new LinkedList();
+// myLL.addToTail(500);
+// myLL.addToTail(600);
+// myLL.addToTail(700);
+
+// myLL.addToHead(10);
+
+const ll = new LinkedList();
+
+ll.addToHead(1000)
+ll.addToHead(2000)
+ll.addToTail(3000)
+
+console.log(ll)
+console.log(ll.removeHead())
 console.log(ll)
